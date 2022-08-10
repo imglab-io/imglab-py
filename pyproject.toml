@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools >= 63.4.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imglab"
+description = "Official Python library to integrate with imglab services."
+license = {file="LICENSE"}
+authors = [
+  {name="imglab", email="support@imglab.io"},
+]
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.6",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+dynamic = ["readme", "version"]
+
+[project.urls]
+homepage = "https://imglab.io"
+repository = "https://github.com/imglab-io/imglab-py"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"]}
+version = {attr = "imglab.__version__"}
+
+[tool.black]
+line-length = 120
