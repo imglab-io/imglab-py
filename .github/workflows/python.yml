@@ -1,0 +1,27 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.9', '3.8', '3.7', '3.6']
+    container: python:${{ matrix.python }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore dependencies cache
+      uses: actions/cache@v2
+      with:
+        key: ${{ runner.os }}-${{ matrix.python }}
+        restore-keys: ${{ runner.os }}-${{ matrix.python }}
+    - name: Run tests
+      run: |
+        python -m unittest
+        python -m doctest README.md
