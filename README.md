@@ -244,9 +244,9 @@ imglab.url("assets", "image.jpeg", width=500, expires=expires_at)
 
 For on-premises imglab server is possible to define custom sources pointing to your server location.
 
-* `https` - a `bool` value specifying if the source should use https or not (default: `True`)
-* `host` - a `string` specifying the host where the imglab server is located. (default: `imglab-cdn.net`)
-* `port` - a `integer` specifying a port where the imglab server is located.
+* `https` - a `boolean` value specifying if the source should use https or not (default: `True`)
+* `host` - a `string` specifying the host where the imglab server is located. (default: `"imglab-cdn.net"`)
+* `port` - an `integer` specifying a port where the imglab server is located. (default: `None`)
 * `subdomains` - a `bool` value specifying if the source should be specified using subdomains instead of using the path. (default: `True`)
 
 If we have our on-premises imglab server at `http://my-company.com:8080` with a source named `images` we can use the following source settings to access a `logo.png` image:
