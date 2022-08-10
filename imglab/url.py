@@ -67,8 +67,6 @@ def _encode_path_component(path_component):
 
 def _encode_params(source, path, params):
     if source.is_secure():
-        signature = generate_signature(source, path, urlencode(params))
+        params.update(signature=generate_signature(source, path, urlencode(params)))
 
-        return urlencode(params | {"signature": signature})
-    else:
-        return urlencode(params)
+    return urlencode(params)
