@@ -31,7 +31,6 @@ The easiest way to generate a URL is to specify the name of the `source`, a `pat
 If some specific settings are required for the source you can use an instance of `imglab.Source` class instead:
 
 ```python
->>> import imglab
 >>> imglab.url(imglab.Source("assets"), "image.jpeg", width=500, height=600)
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=600'
 
@@ -42,7 +41,6 @@ If some specific settings are required for the source you can use an instance of
 For sources that require signed URLs you can specify `secure_key` and `secure_salt` attributes:
 
 ```python
->>> import imglab
 >>> source = imglab.Source("assets", secure_key="55IX1RVlDHpgl/4D", secure_salt="ITvYA2lPfyz0w8/v")
 >>> imglab.url(source, "image.jpeg", width=500, height=600)
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=600&signature=16sKGTU_dgMVqzU1JUBfkkmUV3vCKoZFkwVBYiqnGZU'
@@ -58,7 +56,6 @@ For sources that require signed URLs you can specify `secure_key` and `secure_sa
 In the case that HTTP schema is required instead of HTTPS you can set `https` attribute to `False` when creating the source:
 
 ```python
->>> import imglab
 >>> imglab.url(imglab.Source("assets", https=False), "image.jpeg", width=500, height=600)
 'http://assets.imglab-cdn.net/image.jpeg?width=500&height=600'
 
@@ -71,7 +68,6 @@ In the case that HTTP schema is required instead of HTTPS you can set `https` at
 Any parameter from the imglab API can be used to generate URLs with `imglab.url` method. For parameters that required dashes characters like `trim-color` you can use regular underscore argument names like `trim_color` those will be normalized in the URL generation to it's correct form:
 
 ```python
->>> import imglab
 >>> imglab.url("assets", "image.jpeg", trim="color", trim_color="black")
 'https://assets.imglab-cdn.net/image.jpeg?trim=color&trim-color=black'
 
@@ -80,7 +76,6 @@ Any parameter from the imglab API can be used to generate URLs with `imglab.url`
 If necessary you can pass a dictionary instead of a list of keyword arguments, unpacking the dictionary with `**` operator:
 
 ```python
->>> import imglab
 >>> imglab.url("assets", "image.jpeg", **{"trim": "color", "trim-color": "black"})
 'https://assets.imglab-cdn.net/image.jpeg?trim=color&trim-color=black'
 
@@ -91,7 +86,6 @@ If necessary you can pass a dictionary instead of a list of keyword arguments, u
 Some imglab parameters can receive a color as value. It is possible to specify these color values as strings:
 
 ```python
->>> import imglab
 >>> # Specifying a RGB color as string
 >>> imglab.url("assets", "image.jpeg", width=500, height=600, mode="contain", background_color="255,0,0")
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=600&mode=contain&background-color=255%2C0%2C0'
@@ -113,8 +107,6 @@ Some imglab parameters can receive a color as value. It is possible to specify t
 You can additionally use `imglab.color` helper to specify color values:
 
 ```python
->>> import imglab
->>> # You can import imglab.color helper function
 >>> from imglab import color
 
 >>> # Using color helper function for a RGB color
@@ -138,7 +130,6 @@ You can additionally use `imglab.color` helper to specify color values:
 Some imglab parameters can receive a position as value. It is possible to specify these values using strings:
 
 ```python
->>> import imglab
 >>> # Specifying a horizontal and vertical position as string
 >>> imglab.url("assets", "image.jpeg", width=500, height=500, mode="crop", crop="left,top")
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=500&mode=crop&crop=left%2Ctop'
@@ -156,8 +147,6 @@ Some imglab parameters can receive a position as value. It is possible to specif
 You can additionally use `imglab.position` helper function to specify position values:
 
 ```python
->>> import imglab
->>> # You can import imglab.position helper function
 >>> from imglab import position
 
 >>> # Using position function helper for a horizontal and vertical position
@@ -179,7 +168,6 @@ You can additionally use `imglab.position` helper function to specify position v
 Some imglab parameters can receive URLs as values. It is possible to specify these parameter values as strings:
 
 ```python
->>> import imglab
 >>> imglab.url("assets", "image.jpeg", width=500, height=600, watermark="logo.svg")
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=600&watermark=logo.svg'
 
@@ -188,7 +176,6 @@ Some imglab parameters can receive URLs as values. It is possible to specify the
 And even use parameters if required:
 
 ```python
->>> import imglab
 >>> imglab.url("assets", "image.jpeg", width=500, height=600, watermark="logo.svg?width=100&format=png")
 'https://assets.imglab-cdn.net/image.jpeg?width=500&height=600&watermark=logo.svg%3Fwidth%3D100%26format%3Dpng'
 
@@ -197,7 +184,6 @@ And even use parameters if required:
 Additionally you can use nested `imglab.url` calls to specify these URL values:
 
 ```python
->>> import imglab
 >>> imglab.url(
 ...     "assets",
 ...     "image.jpeg",
@@ -212,7 +198,6 @@ Additionally you can use nested `imglab.url` calls to specify these URL values:
 If the resource is located in a different source we can specify it using `imglab.url`:
 
 ```python
->>> import imglab
 >>> imglab.url(
 ...     "assets",
 ...     "image.jpeg",
@@ -227,7 +212,6 @@ If the resource is located in a different source we can specify it using `imglab
 Using secure sources for URLs parameter values is possible too:
 
 ```python
->>> import imglab
 >>> marketing = imglab.Source("marketing", secure_key="55IX1RVlDHpgl/4D", secure_salt="ITvYA2lPfyz0w8/v")
 >>> imglab.url(
 ...     "assets",
@@ -249,7 +233,6 @@ The `expires` parameter allows you to specify a UNIX timestamp in seconds after 
 If a `datetime` or `struct_time` instance is specified as value to `expires` parameter it will be automatically converted to UNIX timestamp. In the following example, we specify an expiration time of one hour:
 
 ```python
-import imglab
 import datetime
 expires_at = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
 imglab.url("assets", "image.jpeg", width=500, expires=expires_at)
@@ -269,7 +252,6 @@ For on-premises imglab server is possible to define custom sources pointing to y
 If we have our on-premises imglab server at `http://my-company.com:8080` with a source named `images` we can use the following source settings to access a `logo.png` image:
 
 ```python
->>> import imglab
 >>> source = imglab.Source("images", https=False, host="my-company.com", port=8080)
 >>> imglab.url(source, "logo.png", width=300, height=300, format="png")
 'http://images.my-company.com:8080/logo.png?width=300&height=300&format=png'
@@ -279,7 +261,6 @@ If we have our on-premises imglab server at `http://my-company.com:8080` with a 
 It is possible to use secure sources too:
 
 ```python
->>> import imglab
 >>> source = imglab.Source(
 ...     "images",
 ...     https=False,
@@ -298,7 +279,6 @@ It is possible to use secure sources too:
 In the case that your on-premises imglab server is configured to use source names as paths instead of subdomains you can set `subdomains` attribute to `False`:
 
 ```python
->>> import imglab
 >>> source = imglab.Source(
 ...     "images",
 ...     https=False,
