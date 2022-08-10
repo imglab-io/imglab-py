@@ -5,7 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "imglab"
 description = "Official Python library to integrate with imglab services."
-license = {file="LICENSE"}
+readme = "README.md"
+license = {text = "MIT License"}
 authors = [
   {name="imglab", email="support@imglab.io"},
 ]
@@ -20,14 +21,13 @@ classifiers = [
     "Operating System :: OS Independent",
     "Intended Audience :: Developers",
 ]
-dynamic = ["readme", "version"]
+dynamic = ["version"]
 
 [project.urls]
-homepage = "https://imglab.io"
-repository = "https://github.com/imglab-io/imglab-py"
+"Homepage" = "https://imglab.io"
+"Source Code" = "https://github.com/imglab-io/imglab-py"
 
 [tool.setuptools.dynamic]
-readme = {file = ["README.md"]}
 version = {attr = "imglab.__version__"}
 
 [tool.black]
