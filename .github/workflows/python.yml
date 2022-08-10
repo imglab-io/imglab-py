@@ -8,19 +8,17 @@ on:
 
 jobs:
   build:
-    name: Build and test
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ['3.10', '3.9', '3.8', '3.7', '3.6']
-    container: python:${{ matrix.python }}
+        python-version: ['3.10', '3.9', '3.8', '3.7', '3.6']
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        key: ${{ runner.os }}-${{ matrix.python }}
-        restore-keys: ${{ runner.os }}-${{ matrix.python }}
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
     - name: Run tests
       run: |
         python -m unittest
