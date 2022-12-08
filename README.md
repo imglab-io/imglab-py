@@ -10,7 +10,7 @@ $ pip install imglab
 
 ## Python compatibility
 
-`imglab` has been successfully tested with the following Python versions: `3.10`, `3.9`, `3.8`, `3.7`, `3.6`.
+`imglab` has been successfully tested with the following Python versions: `3.11`, `3.10`, `3.9`, `3.8`, `3.7`, `3.6`.
 
 ## Generating URLs
 
