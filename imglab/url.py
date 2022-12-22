@@ -6,7 +6,7 @@ from .utils import url as utils
 
 
 def url(source, path, **params):
-    """Returns a formatted URL string for a source, with a path and some optional arguments
+    """Returns a formatted URL string for a source, with a path and optional arguments
 
     :Examples:
         >>> import imglab
@@ -22,7 +22,7 @@ def url(source, path, **params):
     :param params: The query parameters that we want to use as a keyword argument list
     :type params: list, optional
     :raises ValueError: When the specified source is not a string or a :class:`imglab.Source` object
-    :return: A string with the resulting URL
+    :return: A string with the generated URL
     :rtype: str
     """
     if isinstance(source, str):

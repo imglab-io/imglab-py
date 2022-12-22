@@ -7,7 +7,7 @@ DEFAULT_WIDTHS = sequence(100, 8192)
 
 
 def srcset(source, path, **params):
-    """Returns a formatted srcset string for a source, with a path and some optional arguments
+    """Returns a formatted srcset string for a source, with a path and optional arguments
 
     :Examples:
         >>> import imglab
@@ -23,7 +23,7 @@ def srcset(source, path, **params):
     :param params: The query parameters that we want to use as keyword argument list
     :type params: list, optional
     :raises ValueError: When the specified source is not a string or a :class:`imglab.Source` object
-    :return: A string with the resulting srcset value
+    :return: A string with the generated srcset value
     :rtype: str
     """
     params = utils.normalize_params(params)

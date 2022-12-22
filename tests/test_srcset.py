@@ -3,9 +3,6 @@ import doctest
 
 import imglab
 
-SECURE_KEY = "ixUd9is/LDGBw6NPfLCGLjO/WraJlHdytC1+xiIFj22mXAWs/6R6ws4gxSXbDcUHMHv0G+oiTgyfMVsRS2b3"
-SECURE_SALT = "c9G9eYKCeWen7vkEyV1cnr4MZkfLI/yo6j72JItzKHjMGDNZKqPFzRtup//qiT51HKGJrAha6Gv2huSFLwJr"
-
 
 class TestSrcsetWithSourceName(unittest.TestCase):
     def test_srcset_without_params(self):
@@ -1941,8 +1938,11 @@ class TestSrcsetWithSource(unittest.TestCase):
 
 
 class TestSrcsetWithSecureSource(unittest.TestCase):
+    SECURE_KEY = "ixUd9is/LDGBw6NPfLCGLjO/WraJlHdytC1+xiIFj22mXAWs/6R6ws4gxSXbDcUHMHv0G+oiTgyfMVsRS2b3"
+    SECURE_SALT = "c9G9eYKCeWen7vkEyV1cnr4MZkfLI/yo6j72JItzKHjMGDNZKqPFzRtup//qiT51HKGJrAha6Gv2huSFLwJr"
+
     def setUp(self):
-        self.source = imglab.Source("assets", secure_key=SECURE_KEY, secure_salt=SECURE_SALT)
+        self.source = imglab.Source("assets", secure_key=self.SECURE_KEY, secure_salt=self.SECURE_SALT)
 
     def test_srcset_without_params(self):
         srcset = imglab.srcset(self.source, "example.jpeg")

@@ -2,7 +2,7 @@ DEFAULT_SIZE = 16
 
 
 def sequence(first, last, size=DEFAULT_SIZE):
-    """Returns a geometric sequence list of integer numbers inside an interval with an optional size
+    """Returns a geometric sequence list of integer numbers inside an interval, with an optional size
 
     :Examples:
         >>> from imglab import sequence

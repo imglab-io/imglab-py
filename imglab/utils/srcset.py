@@ -1,6 +1,6 @@
 from itertools import zip_longest
 
-from imglab.sequence import sequence, DEFAULT_SIZE as SEQUENCE_DEFAULT_SIZE
+from ..sequence import sequence, DEFAULT_SIZE as SEQUENCE_DEFAULT_SIZE
 
 NORMALIZE_KEYS = ["dpr", "width"]
 
