@@ -4,10 +4,10 @@ import doctest
 from time import gmtime
 from datetime import datetime
 
-from imglab import utils
+from imglab.utils import url as utils
 
 
-class TestUtils(unittest.TestCase):
+class TestUrlUtils(unittest.TestCase):
     def test_normalize_path(self):
         self.assertEqual(utils.normalize_path(""), "")
         self.assertEqual(utils.normalize_path("example.jpeg"), "example.jpeg")
@@ -28,6 +28,10 @@ class TestUtils(unittest.TestCase):
     def test_normalize_params(self):
         self.assertEqual(utils.normalize_params({}), {})
         self.assertEqual(utils.normalize_params({"width": 200, "height": 300}), {"width": 200, "height": 300})
+        self.assertEqual(
+            utils.normalize_params({"width": 200, "height": 300, "download": None}),
+            {"width": 200, "height": 300, "download": ""}
+        )
         self.assertEqual(
             utils.normalize_params({"trim": "color", "trim_color": "orange"}),
             {"trim": "color", "trim-color": "orange"},
@@ -69,7 +73,7 @@ class TestUtils(unittest.TestCase):
 
 
 def load_tests(loader, tests, ignore):
-    tests.addTests(doctest.DocTestSuite("imglab.utils"))
+    tests.addTests(doctest.DocTestSuite("imglab.utils.url"))
 
     return tests
 

@@ -18,6 +18,11 @@ class TestUrlWithSourceName(unittest.TestCase):
 
         self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&height=300&format=png")
 
+    def test_url_with_none_params(self):
+        url = imglab.url("assets", "example.jpeg", width=200, download=None)
+
+        self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&download=")
+
     def test_url_with_params_using_string_path(self):
         url = imglab.url("assets", "example.jpeg", width=200, height=300, watermark="example.svg", format="png")
 
@@ -185,6 +190,11 @@ class TestUrlWithSource(unittest.TestCase):
         url = imglab.url(imglab.Source("assets"), "example.jpeg", width=200, height=300, format="png")
 
         self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&height=300&format=png")
+
+    def test_url_with_none_params(self):
+        url = imglab.url(imglab.Source("assets"), "example.jpeg", width=200, download=None)
+
+        self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&download=")
 
     def test_url_with_params_using_string_path(self):
         url = imglab.url(imglab.Source("assets"), "example.jpeg", width=200, height=300, watermark="example.svg", format="png")
@@ -396,6 +406,16 @@ class TestUrlWithSecureSource(unittest.TestCase):
         )
 
         self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&height=300&format=png&signature=VJ159IlBl_AlN59QWvyJov5SlQXlrZNpXgDJLJgzP8g")
+
+    def test_url_with_none_params(self):
+        url = imglab.url(
+            imglab.Source("assets", secure_key=self.SECURE_KEY, secure_salt=self.SECURE_SALT),
+            "example.jpeg",
+            width=200,
+            download=None
+        )
+
+        self.assertEqual(url, "https://assets.imglab-cdn.net/example.jpeg?width=200&download=&signature=ljL9HNRaxVrk7jfQaf6FPYFZn4RJzQPCW-aVNJoIQI8")
 
     def test_url_with_params_using_string_path(self):
         url = imglab.url(
@@ -690,16 +710,13 @@ class TestUrlWithSecureSource(unittest.TestCase):
 
 class TestUrlWithInvalidSource(unittest.TestCase):
     def test_url_with_none_as_source(self):
-        with self.assertRaises(ValueError):
-            imglab.url(None, "example.jpeg")
+        with self.assertRaises(ValueError): imglab.url(None, "example.jpeg")
 
     def test_url_with_dict_as_source(self):
-        with self.assertRaises(ValueError):
-            imglab.url({}, "example.jpeg")
+        with self.assertRaises(ValueError): imglab.url({}, "example.jpeg")
 
     def test_url_with_integer_as_source(self):
-        with self.assertRaises(ValueError):
-            imglab.url(10, "example.jpeg")
+        with self.assertRaises(ValueError): imglab.url(10, "example.jpeg")
 
 
 def load_tests(loader, tests, ignore):
