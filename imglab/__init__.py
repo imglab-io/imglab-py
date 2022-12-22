@@ -1,7 +1,7 @@
 from .source import Source
 from .color import color
 from .position import position
-from .sequence import sequence, DEFAULT_SIZE as SEQUENCE_DEFAULT_SIZE
+from .sequence import sequence
 from .url import url
 from .srcset import srcset
 
