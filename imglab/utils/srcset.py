@@ -41,7 +41,10 @@ def split_params_dpr(params):
     :return: A list of dicts with parameters to be used for every URL in a srcset
     :rtype: list
     """
-    return list(_merge_params(params, {"dpr": dpr, "quality": quality}) for dpr, quality in _split_values(params, SPLIT_DPR_KEYS, _split_size_dpr(params["dpr"])))
+    return list(
+        _merge_params(params, {"dpr": dpr, "quality": quality})
+        for dpr, quality in _split_values(params, SPLIT_DPR_KEYS, _split_size_dpr(params["dpr"]))
+    )
 
 
 def split_params_width(params):
@@ -59,7 +62,10 @@ def split_params_width(params):
     :return: A list of dicts with parameters to be used for every URL in a srcset
     :rtype: list
     """
-    return list(_merge_params(params, {"width": width, "height": height, "quality": quality}) for width, height, quality in _split_values(params, SPLIT_WIDTH_KEYS, _split_size_width(params["width"])))
+    return list(
+        _merge_params(params, {"width": width, "height": height, "quality": quality})
+        for width, height, quality in _split_values(params, SPLIT_WIDTH_KEYS, _split_size_width(params["width"]))
+    )
 
 
 def _split_size_dpr(value):

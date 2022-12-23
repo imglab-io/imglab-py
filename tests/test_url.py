@@ -577,13 +577,16 @@ class TestUrlWithSecureSource(unittest.TestCase):
 
 class TestUrlWithInvalidSource(unittest.TestCase):
     def test_url_with_none_as_source(self):
-        with self.assertRaises(ValueError): imglab.url(None, "example.jpeg")
+        with self.assertRaises(ValueError):
+            imglab.url(None, "example.jpeg")
 
     def test_url_with_dict_as_source(self):
-        with self.assertRaises(ValueError): imglab.url({}, "example.jpeg")
+        with self.assertRaises(ValueError):
+            imglab.url({}, "example.jpeg")
 
     def test_url_with_integer_as_source(self):
-        with self.assertRaises(ValueError): imglab.url(10, "example.jpeg")
+        with self.assertRaises(ValueError):
+            imglab.url(10, "example.jpeg")
 
 
 def load_tests(loader, tests, ignore):

@@ -30,7 +30,7 @@ class TestUrlUtils(unittest.TestCase):
         self.assertEqual(utils.normalize_params({"width": 200, "height": 300}), {"width": 200, "height": 300})
         self.assertEqual(
             utils.normalize_params({"width": 200, "height": 300, "download": None}),
-            {"width": 200, "height": 300, "download": ""}
+            {"width": 200, "height": 300, "download": ""},
         )
         self.assertEqual(
             utils.normalize_params({"trim": "color", "trim_color": "orange"}),

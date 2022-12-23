@@ -60,11 +60,13 @@ def _is_fluid(value):
 
 def _srcset_dpr(source, path, params):
     return ",\n".join(
-        "%s %dx" % (url(source, path, **split_params), split_params["dpr"]) for split_params in utils.split_params_dpr(params)
+        "%s %dx" % (url(source, path, **split_params), split_params["dpr"])
+        for split_params in utils.split_params_dpr(params)
     )
 
 
 def _srcset_width(source, path, params):
     return ",\n".join(
-        "%s %dw" % (url(source, path, **split_params), split_params["width"]) for split_params in utils.split_params_width(params)
+        "%s %dw" % (url(source, path, **split_params), split_params["width"])
+        for split_params in utils.split_params_width(params)
     )

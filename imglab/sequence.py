@@ -26,9 +26,12 @@ def sequence(first, last, size=DEFAULT_SIZE):
     :return: A sequence of integer numbers as list
     :rtype: list
     """
-    if size <= 0: return []
-    if size == 1: return [first]
-    if size == 2: return [first, last]
+    if size <= 0:
+        return []
+    if size == 1:
+        return [first]
+    if size == 2:
+        return [first, last]
 
     ratio = (last / first) ** (1 / (size - 1))
 
