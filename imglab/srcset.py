@@ -22,7 +22,7 @@ def srcset(source, path, **params):
     :type path: str
     :param params: The query parameters that we want to use as keyword argument list
     :type params: list, optional
-    :raises ValueError: When the specified source is not a string or a :class:`imglab.Source` object
+    :raises ValueError: When some params fluid combinations are not allowed
     :return: A string with the generated srcset value
     :rtype: str
     """
