@@ -297,11 +297,11 @@ You can use `imglab.srcset` function to generate custom string values for `srcse
 
 This function works similarly to function `imglab.url`, expecting the same parameters and values, except for some specific query parameters that have a special meaning and can receive `range` and `list` as values.
 
-> To learn more about responsive images and the `srcset` attribute, you can visit [Mozilla article about responsive images](https://developer.mozilla.org/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+> To learn more about responsive images and the `srcset` attribute, you can take a look to the [MDN article about responsive images](https://developer.mozilla.org/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
 
 ### Fixed size
 
-When enough information is provided about the image output size (using `width` or `height` parameters), `srcset` function will generate URLs with a default sequence of device pixel ratios.
+When enough information is provided about the image output size (using `width` or `height` parameters), `imglab.srcset` function will generate URLs with a default sequence of device pixel ratios.
 
 For the following example we are specying a fixed value of `500` pixels for `width` parameter:
 
@@ -548,7 +548,7 @@ https://assets.imglab-cdn.net/image.jpeg?height=300&aspect-ratio=16%3A9&mode=cro
 
 ```
 
-You can also use fluid width values while maintaining the same aspect ratio for all generated URLs. In this example, we are using a `range` value between `100` and `4096` for `width` parameter, a value of `1:1` for `aspect-ratio`, `crop` resize mode and `webp` output format:
+You can also use fluid values for `width` parameter while maintaining the same aspect ratio for all generated URLs. In this example, we are using a `range` value between `100` and `4096` for `width` parameter, a value of `1:1` for `aspect-ratio`, `crop` resize mode and `webp` output format:
 
 ```python
 >>> srcset = imglab.srcset("assets", "image.jpeg", width=range(100, 4096), aspect_ratio="1:1", mode="crop", format="webp")
