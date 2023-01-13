@@ -3,7 +3,7 @@ VERTICAL = ["top", "middle", "bottom"]
 
 
 def position(*args):
-    """Returns a formatted position value as string.
+    """Returns a formatted and validated position value as string
 
     :Examples:
         >>> from imglab import position
@@ -16,9 +16,10 @@ def position(*args):
         >>> position("bottom")
         'bottom'
 
-    :param args: The position with two directions or one single direction as strings.
+    :param args: The position with two directions or one single direction as strings
     :type args: list
-    :return: A string value representing the color or a `ValueError` exception if the arguments are invalid.
+    :raises ValueError: When arguments are an invalid position
+    :return: A string value representing the position
     :rtype: str
     """
     if len(args) == 1 and __valid_position(args[0]):

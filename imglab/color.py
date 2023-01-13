@@ -151,20 +151,21 @@ COLORS = [
 
 
 def color(*args):
-    """Returns a formatted color value as string.
+    """Returns a formatted and validated color value as string
 
     :Examples:
         >>> from imglab import color
+        >>> color("white")
+        'white'
         >>> color(255, 128, 128)
         '255,128,128'
         >>> color(255, 128, 128, 64)
         '255,128,128,64'
-        >>> color("white")
-        'white'
 
-    :param args: A string representing a named color or a list of 3 or 4 integer color components.
+    :param args: A string representing a named color or a list of 3 or 4 integer color components
     :type args: list
-    :return: A string with the color value or a `ValueError` exception if the arguments are invalid.
+    :raises ValueError: When arguments are an invalid color
+    :return: A string value representing the color
     :rtype: str
     """
     if len(args) == 1 and args[0] in COLORS:

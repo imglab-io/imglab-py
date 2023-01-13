@@ -4,7 +4,7 @@ import hashlib
 
 
 def generate(source, path, encoded_params=None):
-    """Returns a generated signature for a source, path and encoded parameters.
+    """Returns a generated signature for a source, path and encoded parameters
 
     :Examples:
         >>> from imglab import signature, Source
@@ -12,13 +12,13 @@ def generate(source, path, encoded_params=None):
         >>> signature.generate(source, "example.jpeg")
         'QFEVlDWgK289HYKr2KJdwtPC-I7LS195hSVQhS1UsRA'
 
-    :param source: The source used to generate the signature.
+    :param source: The source used to generate the signature
     :type source: class:`imglab.Source`
-    :param path: The path of the resource.
+    :param path: The path of the resource
     :type path: str
-    :param encoded_params: Encoded query params of the URL to generate the signature.
+    :param encoded_params: Encoded query params of the URL to generate the signature, defaults to None
     :type encoded_params: str, optional
-    :return: A string with the signature encoded using Base64 to be used in a imglab URL.
+    :return: A string with the signature encoded using Base64 to be used in a imglab URL
     :rtype: str
     """
     decoded_secure_key = base64.b64decode(source.secure_key.encode())
